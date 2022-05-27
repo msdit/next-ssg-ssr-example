@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 const TodoItem = ({ todoItem }) => {
   const router = useRouter();
   console.log(router);
-  
+
   return <div>todo: {JSON.stringify(todoItem)}</div>;
 };
 
@@ -27,12 +27,12 @@ export async function getStaticPaths() {
 
   return {
     paths: [
-      { params: { todoId: "1" } },
-      { params: { todoId: "2" } },
-      { params: { todoId: "3" } },
+      { params: { userId: "1", todoId: "1" } },
+      { params: { userId: "1", todoId: "2" } },
+      { params: { userId: "1", todoId: "3" } },
     ],
     // paths: todoList.map((todo) => ({
-    //   params: { todoId: String(todo.id) },
+    //   params: { userId: String(todo.userId), todoId: String(todo.id) },
     // })),
     fallback: true, // false = return 404 if not found
   };
