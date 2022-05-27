@@ -1,11 +1,15 @@
 import { Fragment } from "react";
+import { useRouter } from "next/router";
 
 const TodoList = ({ todoList }) => {
+  const router = useRouter();
+  const { userId } = router.query;
+
   return (
     <>
       {todoList.map((todo) => (
         <Fragment key={todo.id}>
-          <a href={`/todos/${todo.id}`}>
+          <a href={`/ssg/todos/${userId}/${todo.id}`}>
             {todo.id}. {todo.title}
           </a>
           <hr />
