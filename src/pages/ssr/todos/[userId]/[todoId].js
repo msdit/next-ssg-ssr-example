@@ -1,4 +1,9 @@
+import { useRouter } from "next/router";
+
 const TodoItem = ({ todoItem }) => {
+  const router = useRouter();
+  console.log(router);
+
   return <div>todo: {JSON.stringify(todoItem)}</div>;
 };
 

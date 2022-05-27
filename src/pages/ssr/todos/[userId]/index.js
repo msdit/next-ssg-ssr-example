@@ -5,7 +5,9 @@ const TodoList = ({ todoList }) => {
     <>
       {todoList.map((todo) => (
         <Fragment key={todo.id}>
-          <a href={`/todos/${todo.id}`}>{todo.title}</a>
+          <a href={`/todos/${todo.id}`}>
+            {todo.id}. {todo.title}
+          </a>
           <hr />
         </Fragment>
       ))}
@@ -13,8 +15,10 @@ const TodoList = ({ todoList }) => {
   );
 };
 
-export async function getServerSideProps() {
-  let todoList = await fetch("https://jsonplaceholder.typicode.com/todos/");
+export async function getServerSideProps(ctx) {
+  let todoList = await fetch(
+    `https://jsonplaceholder.typicode.com/todos/?userId=${ctx.query.userId}`
+  );
   todoList = await todoList.json();
 
   return {
