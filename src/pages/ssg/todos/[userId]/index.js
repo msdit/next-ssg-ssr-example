@@ -1,17 +1,27 @@
 import { Fragment } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const TodoList = ({ todoList }) => {
   const router = useRouter();
   const { userId } = router.query;
 
+  const goToPage = (pageId) => {
+    router.push(`/ssg/todos/${userId}/${pageId}`);
+  };
+
   return (
     <>
       {todoList.map((todo) => (
         <Fragment key={todo.id}>
-          <a href={`/ssg/todos/${userId}/${todo.id}`}>
-            {todo.id}. {todo.title}
-          </a>
+          <Link href={`/ssg/todos/${userId}/${todo.id}`} prefetch={false}>
+            <a target="_blank">
+              {todo.id}. {todo.title}
+            </a>
+          </Link>
+          <button onClick={() => goToPage(todo.id)}>
+            Go to page {todo.id}
+          </button>
           <hr />
         </Fragment>
       ))}

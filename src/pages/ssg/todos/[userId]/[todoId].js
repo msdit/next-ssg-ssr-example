@@ -4,7 +4,16 @@ const TodoItem = ({ todoItem }) => {
   const router = useRouter();
   console.log(router);
 
-  return <div>todo: {JSON.stringify(todoItem)}</div>;
+  const goBack = () => {
+    router.back();
+  };
+
+  return (
+    <>
+      <div>todo: {JSON.stringify(todoItem)}</div>
+      <button onClick={goBack}>Go back</button>
+    </>
+  );
 };
 
 export async function getStaticProps(ctx) {
