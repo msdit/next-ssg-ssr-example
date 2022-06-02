@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
         id="imber"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
-          __html: `alert('hi')`,
+          __html: `console.log('hi')`,
         }}
       />
     </div>
